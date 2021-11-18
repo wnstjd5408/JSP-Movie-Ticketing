@@ -16,7 +16,7 @@ public class UserDAO {
 	
 	
 	private String user ="root";
-	private String password = "123456";
+	private String password = "1234";
 	
 	
 	public UserDAO() {
@@ -79,6 +79,43 @@ public class UserDAO {
 		return null;
 	}
 	
+	public int insertUser(UserDTO register) {
+		if(register.getUserid() == null) return 0;
+		
+		String sql = "insert into user"
+				+ "values('%s, %s, %s, %s, %s)";
+		
+		
+		sql = String.format(sql, register.getUserid(),register.getPassword(), register.getUsername(),
+				Integer.toString(register.getAge()),register.getPhoneNum());
+		
+		
+		System.out.println("sql 구문" + sql);
+		
+		try {
+			state = conn.createStatement();
+			int row = state.executeUpdate(sql);
+			
+			
+			return row;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			System.out.println("SQL문 에러~~!!!");
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null)		rs.close();
+				if(state != null)	state.close();
+				if(conn != null)	conn.close();
+				
+			}catch(Exception e) {
+				 
+				
+			}
+		}
+		return 0;
+		
+	}
 	
 	
 	

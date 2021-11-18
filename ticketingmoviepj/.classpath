@@ -14,5 +14,9 @@
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container"/>
 	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.module.container"/>
 	<classpathentry kind="lib" path="D:/2021 강의/3학년 2학기/소프트웨어공학/mariadb-java-client-2.7.4.jar"/>
+	<classpathentry kind="lib" path="D:/2021 강의/3학년 2학기/소프트웨어공학/JSP PJ/JSP-Movie-Ticketing/ticketingmoviepj/WebContent/WEB-INF/lib/tomcat-dbcp.jar"/>
+	<classpathentry kind="lib" path="D:/2021 강의/3학년 2학기/소프트웨어공학/JSP PJ/JSP-Movie-Ticketing/ticketingmoviepj/WebContent/WEB-INF/lib/standard.jar"/>
+	<classpathentry kind="lib" path="D:/2021 강의/3학년 2학기/소프트웨어공학/JSP PJ/JSP-Movie-Ticketing/ticketingmoviepj/WebContent/WEB-INF/lib/jstl.jar"/>
+	<classpathentry kind="lib" path="D:/2021 강의/3학년 2학기/소프트웨어공학/JSP PJ/JSP-Movie-Ticketing/ticketingmoviepj/WebContent/WEB-INF/lib/cos.jar"/>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

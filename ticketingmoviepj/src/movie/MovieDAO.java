@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 
 
+
 public class MovieDAO {
 
 	
@@ -18,7 +19,7 @@ public class MovieDAO {
 	
 	
 	String user ="root";
-	String password = "111";
+	String password = "1234";
 	
 	private static MovieDAO instance = new MovieDAO();
 
@@ -84,5 +85,8 @@ public class MovieDAO {
 		}
 		return null;
 	}
+	
+	
+
 }
 	
