@@ -1,5 +1,9 @@
+<%@page import="user.UserDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %> 
+<c:set var="cpath">${pageContext.request.contextPath }</c:set>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,7 +12,7 @@
 </head>
 <body>
 	<nav class= "navbar navbar-expand-lg navbar-light bg-light border-bottom">
-		<a class="navbar-brand"style=" color: #e71a0f;" href="/"><strong>CGV</strong></a>
+		<a class="navbar-brand"style=" color: #e71a0f;" href="${cpath }/Movie/MainForm.jsp"><strong>CGV</strong></a>
 	    <button
 	    class="navbar-toggler ml-auto"
 	    type="button"
@@ -23,16 +27,29 @@
   		
   		<div class ="collapse navbar-collapse flex-grow-0" id ="navbarNav">
   			<ul class="navbar-nav">
-  				<li class="nav-item">
-  					<a class="nav-link" href="../User/loginform1.jsp">로그인</a>
+  			<c:choose>
+  				<c:when test="${login == null }">
+  					<li class="nav-item">
+	  					<a class="nav-link" href="${cpath }/User/loginform1.jsp">로그인</a>
+	  				</li>
+	  				<li>
+	  					<a class="nav-link" href="${cpath }/User/registerform.jsp">회원가입</a>
+	  				</li>
   				
-  				</li>
-  				<li>
-  					<a class="nav-link" href="#">회원가입</a>
-  				</li>
-  				<li>
-  					<a class="nav-link" href="#">영화예매</a>
-  				</li>
+  				</c:when>
+  				<c:otherwise>
+  					<li class="nav-item">
+	  					<a class="nav-link" href="${cpath }/User/logout.jsp">로그아웃</a>
+	  				</li>
+  					<li>
+	  					<a class="nav-link" href="${cpath }/User/myPage.jsp">마이페이지</a>
+	  				</li>
+  				</c:otherwise>	
+	  				
+  			</c:choose>
+  					<li>
+	  					<a class="nav-link" href="#">영화예매</a>
+	  				</li>
   			</ul>
   		</div>
   		

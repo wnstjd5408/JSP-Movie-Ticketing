@@ -1,19 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-
+<c:set var="cpath">${pageContext.request.contextPath }</c:set>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link rel="stylesheet" href="../assets/bootstrap.min.css">
+<link rel="stylesheet" href="${cpath}/assets/bootstrap.min.css">
 <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/theater_img/favicon.ico">
+
+<style>
+	a{
+	 color: red;
+	
+	}
+
+</style>
 </head>
 <body>
 	<c:if test="${login != null }">
 	
-		<c:redirect url ="../Movie/MainForm.jsp"></c:redirect>
+		<c:redirect url ="${cpath}/Movie/MainForm.jsp"></c:redirect>
 	</c:if>
     <%
     	Cookie[] cookies = request.getCookies();

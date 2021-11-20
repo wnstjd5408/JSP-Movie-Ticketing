@@ -40,7 +40,49 @@ public class MovieDAO {
 			}
 	
 	}
-	
+	public MovieDTO movieSelectOne(String id) {
+		String sql = "select * from movie where id =" + id;
+		
+		
+		
+		try {
+			state = conn.createStatement();
+			rs = state.executeQuery(sql);
+			
+			System.out.println("sql문" + sql);
+			while(rs.next()){
+				MovieDTO dto = new MovieDTO();
+				dto.setId(rs.getInt("id"));
+				dto.setTitle(rs.getString("title"));
+				dto.setOpenMovie(rs.getDate("openMovie"));
+				dto.setDirector(rs.getString("director"));
+				dto.setActor(rs.getString("actor"));
+				dto.setGenre(rs.getString("genre"));
+				dto.setAge(rs.getString("title"));
+				dto.setCountry(rs.getString("country"));
+				dto.setRunningtime(rs.getString("runningtime"));
+				dto.setContent(rs.getString("content"));
+				dto.setImg(rs.getString("img"));
+				
+				return dto;
+				
+			}
+		} catch (SQLException e) {
+			System.out.println("SQL 예외" + e.getMessage());
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) 		rs.close();
+				if(state != null)	state.close();
+				if(conn != null)	conn.close();
+			}catch(Exception e) {
+				
+			}
+		
+		}
+		return null;
+		
+	}
 	
 	public ArrayList<MovieDTO> movieselectall(){
 		ArrayList<MovieDTO> movielist = new ArrayList<MovieDTO>();
@@ -63,7 +105,7 @@ public class MovieDAO {
 				dto.setAge(rs.getString("title"));
 				dto.setCountry(rs.getString("country"));
 				dto.setRunningtime(rs.getString("runningtime"));
-				dto.setContent(rs.getString("country"));
+				dto.setContent(rs.getString("content"));
 				dto.setImg(rs.getString("img"));
 				
 				movielist.add(dto);

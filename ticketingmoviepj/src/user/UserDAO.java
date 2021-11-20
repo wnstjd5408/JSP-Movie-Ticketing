@@ -16,7 +16,7 @@ public class UserDAO {
 	
 	
 	private String user ="root";
-	private String password = "1234";
+	private String password = "221";
 	
 	
 	public UserDAO() {
@@ -80,14 +80,17 @@ public class UserDAO {
 	}
 	
 	public int insertUser(UserDTO register) {
-		if(register.getUserid() == null) return 0;
+		if(register.getUserid() == null) { 
+			System.out.println("아이디 값이 없습니다");
+			return 0;
+		}
 		
-		String sql = "insert into user"
-				+ "values('%s, %s, %s, %s, %s)";
+		String sql = "insert into user "
+				+ "values('%s', '%s', '%s', %d, '%s')";
 		
 		
 		sql = String.format(sql, register.getUserid(),register.getPassword(), register.getUsername(),
-				Integer.toString(register.getAge()),register.getPhoneNum());
+				register.getAge(),register.getPhoneNum());
 		
 		
 		System.out.println("sql 구문" + sql);
@@ -116,7 +119,36 @@ public class UserDAO {
 		return 0;
 		
 	}
-	
+	public int idCheck(UserDTO userid) {
+		int rst = 0;
+		String sql = "select * from user where userid = '%s'";
+		sql = String.format(sql, userid.getUserid());
+		
+		
+		System.out.println("아이디 확인" + sql);
+		
+		try {
+			state = conn.createStatement();
+			rs = state.executeQuery(sql);
+			
+			if(rs.next()) rst = 1;
+			
+			
+		} catch (SQLException e) {
+			System.out.println("아이디 찾기 SQL문 에러~~!!!");
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) 		rs.close();
+				if(state != null)	state.close();
+				if(conn != null)	conn.close();
+			}catch(Exception e) {
+				
+			}
+		}
+		
+		return rst;
+	}
 	
 	
 }

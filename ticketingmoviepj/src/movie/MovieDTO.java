@@ -11,8 +11,8 @@ public class MovieDTO {
 	private String genre;
 	private String age;
 	private String country;
-	private String runningtime;
 	private String content;
+	private String runningtime;
 	private String img;
 	
 	
