@@ -17,7 +17,7 @@
 	<c:set var = "list" value = "${dao.userSelectOne(login)}"></c:set>
 	
 	<c:if test="${list != null }">
-		<c:set var="login" scope="session">로그인</c:set>
+		<c:set var="login" scope="session">${login.userid }</c:set>
 		<%
 			String storeid = request.getParameter("storeid");
 			String userid = request.getParameter("userid");

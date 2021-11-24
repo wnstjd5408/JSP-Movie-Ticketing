@@ -3,22 +3,23 @@ package movie;
 import java.sql.*;
 import java.util.ArrayList;
 
-import javax.naming.Context;
-import javax.naming.InitialContext;
-import javax.naming.NamingException;
-import javax.sql.DataSource;
 
 
 
+public class MovieDAO_Backupp {
 
-public class MovieDAO {
-
-	private Context init;
-	private DataSource ds;
+	
 	private Connection conn;
 	private Statement state;
 	private ResultSet rs;
 	
+	
+	String driver ="org.mariadb.jdbc.Driver";
+	String url = "jdbc:mysql://localhost:3306/java_movie";
+	
+	
+	String user ="root";
+	String password = "1234";
 	
 	private static MovieDAO instance = new MovieDAO();
 
@@ -26,13 +27,16 @@ public class MovieDAO {
 		return instance;
 	}
 
-	public MovieDAO() {
+	public MovieDAO_Backupp() {
 			try {
-				init = (Context)new InitialContext();
-				ds = (DataSource)init.lookup("java:comp/env/jdbc/mysql");
-			}
-			catch(NamingException e) {
-				System.out.println("네이미에러~~!!");
+				Class.forName(driver);
+				conn = DriverManager.getConnection(url,user,password);
+			} catch (ClassNotFoundException e) {
+				System.out.println("클래스를 찾을 수 없습니다.");
+				e.printStackTrace();
+			} catch (SQLException e) {
+				System.out.println("SQL 접속 예외");
+				e.printStackTrace();
 			}
 	
 	}
@@ -41,7 +45,6 @@ public class MovieDAO {
 		
 		
 		try {
-			conn = ds.getConnection();
 			state = conn.createStatement();
 			rs = state.executeQuery(sql);
 			
@@ -85,7 +88,6 @@ public class MovieDAO {
 		
 		
 		try {
-			conn = ds.getConnection();
 			state = conn.createStatement();
 			rs = state.executeQuery("select * from movie");
 			

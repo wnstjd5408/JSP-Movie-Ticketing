@@ -2,40 +2,71 @@ package user;
 
 import java.sql.*;
 
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+import javax.sql.DataSource;
+
 
 public class UserDAO {
 
 	
+	private Context init;
+	private DataSource ds;
 	private Connection conn;
 	private Statement state;
 	private ResultSet rs;
 	
 	
-	private String driver ="org.mariadb.jdbc.Driver";
-	private String url = "jdbc:mysql://localhost:3306/java_movie";
-	
-	
-	private String user ="root";
-	private String password = "221";
-	
-	
 	public UserDAO() {
 		try {
-			Class.forName(driver);
-			conn = DriverManager.getConnection(url,user,password);
-		} catch (ClassNotFoundException e) {
-			// TODO Auto-generated catch block
-			System.out.println("클래스를 찾을 수 없습니다.");
-			e.printStackTrace();
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			System.out.println("SQL 접속 예외");
-			e.printStackTrace();
+			init = (Context)new InitialContext();
+			ds = (DataSource)init.lookup("java:comp/env/jdbc/mysql");
 		}
-	
+		catch(NamingException e) {
+			System.out.println("네이미에러~~!!");
+		}
 		
 	}
+	public UserDTO userInfo(String id) {
+		String sql = "select * from user where userid = '%s'";
+		sql =String.format(sql, id);
+		
+		System.out.println("SQL 구분 : "  + sql);
+		
+		
+		try {
+			conn = ds.getConnection();
+			state = conn.createStatement();
+			rs = state.executeQuery(sql);
+			
+			while(rs.next()) {
+				UserDTO dto = new UserDTO();
+				dto.setUserid(rs.getString("userid"));
+				dto.setPassword(rs.getString("password"));
+				dto.setUsername(rs.getString("username"));
+				dto.setAge(rs.getInt("age"));
+				dto.setPhoneNum(rs.getString("phoneNum"));
+				
+				return dto;
+			}
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally {
+			try {
+				if(rs != null) 		rs.close();
+				if(state != null)	state.close();
+				if(conn != null)	conn.close();
+			}catch(Exception e) {
+				
+			}
+			
+		}
+		return null;
 	
+	}
 	public UserDTO userSelectOne(UserDTO login) {
 		String sql = "select * from user where userid = '%s' and password ='%s'";
 		
@@ -47,6 +78,7 @@ public class UserDAO {
 		
 		
 		try {
+			conn = ds.getConnection();
 			state = conn.createStatement();
 			rs = state.executeQuery(sql);
 			
@@ -96,6 +128,7 @@ public class UserDAO {
 		System.out.println("sql 구문" + sql);
 		
 		try {
+			conn = ds.getConnection();
 			state = conn.createStatement();
 			int row = state.executeUpdate(sql);
 			
@@ -128,6 +161,7 @@ public class UserDAO {
 		System.out.println("아이디 확인" + sql);
 		
 		try {
+			conn = ds.getConnection();
 			state = conn.createStatement();
 			rs = state.executeQuery(sql);
 			

@@ -48,7 +48,7 @@
 	  				
   			</c:choose>
   					<li>
-	  					<a class="nav-link" href="#">영화예매</a>
+	  					<a class="nav-link" href="${cpath }/Ticketing/ticketingForm.jsp">영화예매</a>
 	  				</li>
   			</ul>
   		</div>

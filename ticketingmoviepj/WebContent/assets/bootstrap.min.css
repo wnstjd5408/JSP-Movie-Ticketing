@@ -1,3 +1,4 @@
+
 /*!
  * Bootstrap v4.5.3 (https://getbootstrap.com/)
  * Copyright 2011-2020 The Bootstrap Authors
@@ -4005,7 +4006,7 @@ input[type="submit"].btn-block {
 .nav-pills .nav-link.active,
 .nav-pills .show > .nav-link {
   color: #fff;
-  background-color: #007bff;
+  background-color: #E71A0F;
 }
 .nav-fill .nav-item,
 .nav-fill > .nav-link {
