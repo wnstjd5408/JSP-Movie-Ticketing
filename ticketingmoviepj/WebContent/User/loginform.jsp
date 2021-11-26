@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
- 
+<c:set var="cpath">${pageContext.request.contextPath }</c:set>
 <!DOCTYPE html>
 <html>
 <head>
@@ -12,33 +12,190 @@
 
 <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/theater_img/favicon.ico">
   <style>
-      .bd-placeholder-img {
-        font-size: 1.125rem;
-        text-anchor: middle;
-        -webkit-user-select: none;
-        -moz-user-select: none;
-        user-select: none;
-      }
-
-      @media (min-width: 768px) {
-        .bd-placeholder-img-lg {
-          font-size: 3.5rem;
-        }
+  a {
+    color: #E71A0F;
+    text-decoration: none;
+}
+input {
+    -webkit-writing-mode: horizontal-tb !important;
+    text-rendering: auto;
+    color: initial;
+    letter-spacing: normal;
+    word-spacing: normal;
+    text-transform: none;
+    text-indent: 0px;
+    text-shadow: none;
+    display: inline-block;
+    text-align: start;
+    -webkit-appearance: textfield;
+    background-color: white;
+    -webkit-rtl-ordering: logical;
+    cursor: text;
+    margin: 0em;
+    font: 400 13.3333px Arial;
+    padding: 1px 0px;
+    border-width: 2px;
+    border-style: inset;
+    border-color: initial;
+    border-image: initial;
+}
+.inner_login {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin: -145px 0 0 -160px;
+}
+.login_tistory{
+        position: relative;
+        width: 320px;
+        margin: 0 auto;
+    }
+.screen_out {
+    position: absolute;
+    width: 0;
+    height: 0;
+    overflow: hidden;
+    line-height: 0;
+    text-indent: -9999px;    
+}
+body, button, input, select, td, textarea, th {
+    font-size: 13px;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+}    
+fieldset, img {
+    border: 0;
+}
+.login_tistory .box_login {
+    margin: 35px 0 0;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.login_tistory .inp_text {
+    position: relative;
+    width: 100%;
+    margin: 0;
+    padding: 18px 19px 19px;
+    box-sizing: border-box;
+}
+.login_tistory .inp_text+.inp_text {
+    border-top: 1px solid #ddd;
+}
+.inp_text input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    font-size: 13px;
+    color: #000;
+    border: none;
+    outline: 0;
+    -webkit-appearance: none;
+    background-color: transparent;
+}
+.btn_login {
+    margin: 20px 0 0;
+    width: 100%;
+    height: 48px;
+    border-radius: 3px;
+    font-size: 16px;
+    color: #fff;
+    background-color: #E71A0F;
+}
+.login_append {
+    overflow: hidden;
+    padding: 15px 0 0;
+}
+.inp_chk {
+    display: inline-block;
+    position: relative;
+    margin-bottom: -1px;
+}
+.login_append .inp_chk {
+    float: left;
+}
+.inp_chk .inp_radio {
+    position: absolute;
+    z-index: -1;
+    top: 0;
+    left: 0;
+    width: 18px;
+    height: 18px;
+    border: 0;
+}
+.inp_chk .lab_g {
+    display: inline-block;
+    margin-right: 19px;
+    color: #909090;
+    font-size: 13px;
+    line-height: 19px;
+    vertical-align: top;
+}
+.inp_chk .ico_check {
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 1px 4px 0 0;
+    background-position: -60px 0;
+    color: #333;
+}
+.inp_chk .txt_lab {
+    vertical-align: top;
+}
+.login_append .txt_find {
+    float: right;
+    color: #777;
+}
       }
   </style>
-  <link href="../assets/singin.css" rel="stylesheet">
 </head>
 <body class="text-center">
-	<main class="form-signin">
-		<form action="#" method="post">
-			<a href = "../Movie/MainForm.jsp"><img src="https://img.cgv.co.kr/R2014/images/title/h1_cgv.png" class="mb-4" alt="" width="291" height="56"></a>
-			<label for ="inputEmail" class="visually-hidden">ID</label></br>
-			<input name = "userid" id="inputEmail" class="form-control"placeholder="아이디" required autofocus>
-			<label for="inputPassword" class="visually-hidden">Password</label></br>
-    		<input name ="userpw" type="password" id="inputPassword" class="form-control" placeholder="비밀번호" required>
-			<button class="w-100 btn btn-lg btn-danger" type="submit">로그인</button>
-		
-		</form>
-	</main>
+	<c:if test="${login != null }">
+	
+		<c:redirect url ="${cpath}/Movie/MainForm.jsp"></c:redirect>
+	</c:if>
+    <%
+    	Cookie[] cookies = request.getCookies();
+        	
+        	String storeid = null;
+        	String userid = null;
+        	
+        	
+        	if(cookies != null){
+        		
+        		for(Cookie c : cookies){
+        			if("storeid".equals(c.getName())) storeid = c.getValue();
+        			if ("userid".equals(c.getName()))
+    			userid = c.getValue();
+    	}
+    		}
+    %>
+
+<div class="inner_login">
+    <div class="login_tistory">
+
+        <form method="post" id="authForm" action="loginprocess.jsp">
+            <input type="hidden" name="redirectUrl" value="https://blogpack.tistory.com/manage">
+            <fieldset>
+            <legend class="screen_out">로그인 정보 입력폼</legend>
+            <div class="box_login">
+                <div class="inp_text">
+                <label for="loginId" class="screen_out">아이디</label>
+                <input type="email" id="loginId" name="loginId" placeholder="ID" >
+                </div>
+                <div class="inp_text">
+                <label for="loginPw" class="screen_out">비밀번호</label>
+                <input type="password" id="loginPw" name="password" placeholder="Password" >
+                </div>
+            </div>
+            <button type="submit" class="btn_login"  disabled>로그인</button>
+            
+            
+            </fieldset>
+        </form>
+        
+    </div>
+</div>
 </body>
 </html>

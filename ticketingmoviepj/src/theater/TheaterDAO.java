@@ -2,6 +2,7 @@ package theater;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -9,6 +10,7 @@ import javax.naming.NamingException;
 import javax.sql.DataSource;
 
 import movie.MovieDAO;
+import room.RoomDTO;
 
 public class TheaterDAO {
 
@@ -38,7 +40,7 @@ public class TheaterDAO {
 		}
 	}
 	
-	
+
 	public ArrayList<TheaterDTO> theaterselectall(){
 		ArrayList<TheaterDTO> theaterlist = new ArrayList<TheaterDTO>();
 		

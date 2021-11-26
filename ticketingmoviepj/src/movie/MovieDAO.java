@@ -32,7 +32,7 @@ public class MovieDAO {
 				ds = (DataSource)init.lookup("java:comp/env/jdbc/mysql");
 			}
 			catch(NamingException e) {
-				System.out.println("네이미에러~~!!");
+				System.out.println("네이밍에러~~!!" + e.getMessage());
 			}
 	
 	}
@@ -45,7 +45,7 @@ public class MovieDAO {
 			state = conn.createStatement();
 			rs = state.executeQuery(sql);
 			
-			System.out.println("sql문" + sql);
+			System.out.println("sql문 :" + sql);
 			while(rs.next()){
 				MovieDTO dto = new MovieDTO();
 				dto.setId(rs.getInt("id"));
@@ -111,6 +111,7 @@ public class MovieDAO {
 			return movielist;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
+			System.out.println("SQL 예외 :" + e.getMessage());
 			e.printStackTrace();
 		}finally {
 			try {

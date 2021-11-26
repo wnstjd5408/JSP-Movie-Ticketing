@@ -6,6 +6,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
+import java.util.List;
 
 import javax.naming.Context;
 import javax.naming.InitialContext;
@@ -38,19 +39,17 @@ public class RoomDAO {
 		}
 	}
 	
-	
-	public ArrayList<RoomDTO> roomselectall(String name){
+
+	public ArrayList<RoomDTO> theaterSelectOne(String theaterId) {
+		String sql = "SELECT * FROM room where tid = "+theaterId;
 		
-		ArrayList<RoomDTO> roomlist = new ArrayList<RoomDTO>();
-		
-		String sql = "select * from room where tid IN(select tid from theater where tname='%s'";
-		sql = String.format(sql, name);
+		System.out.println("SQL 구문 :" + sql);
 		
 		try {
-			conn =ds.getConnection();
+			conn = ds.getConnection();
 			state = conn.createStatement();
 			rs = state.executeQuery(sql);
-			
+			ArrayList<RoomDTO> roomDtoList = new ArrayList<RoomDTO>();
 			while(rs.next()) {
 				RoomDTO dto = new RoomDTO();
 				dto.setRid(rs.getString("rid"));
@@ -58,14 +57,12 @@ public class RoomDAO {
 				dto.setTseats(rs.getInt("tseats"));
 				dto.setTid(rs.getString("tid"));
 				
-				roomlist.add(dto);
-				
-				
+				roomDtoList.add(dto);
 			}
-			return roomlist;
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return roomDtoList;
+		}
+		catch(SQLException e) {
+			
 		}finally {
 			try {
 				if(rs != null) 		rs.close();
@@ -77,5 +74,6 @@ public class RoomDAO {
 		
 		}
 		return null;
+		
 	}
 }

@@ -28,7 +28,7 @@
   		<div class ="collapse navbar-collapse flex-grow-0" id ="navbarNav">
   			<ul class="navbar-nav">
   			<c:choose>
-  				<c:when test="${login == null }">
+  				<c:when test="${empty login }">
   					<li class="nav-item">
 	  					<a class="nav-link" href="${cpath }/User/loginform1.jsp">로그인</a>
 	  				</li>
