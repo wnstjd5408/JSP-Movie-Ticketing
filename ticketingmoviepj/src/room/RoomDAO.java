@@ -41,8 +41,8 @@ public class RoomDAO {
 	
 
 	public ArrayList<RoomDTO> theaterSelectOne(String theaterId) {
-		String sql = "SELECT * FROM room where tid = "+theaterId;
-		
+		String sql = "SELECT * FROM room where tid = '%s'";
+		sql=String.format(sql, theaterId);
 		System.out.println("SQL 구문 :" + sql);
 		
 		try {

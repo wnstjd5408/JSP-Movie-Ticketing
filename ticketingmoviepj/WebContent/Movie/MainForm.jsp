@@ -45,7 +45,7 @@
 				<td><img src="<%=movielist.getImg() %>" class='img-fluid ' alt="a"></td>
 				<td><%=movielist.getTitle()%></td>
 			 </tr>
-		
+	
 			<%
 				}
 				
