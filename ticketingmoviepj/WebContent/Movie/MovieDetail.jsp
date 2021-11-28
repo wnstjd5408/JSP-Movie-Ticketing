@@ -16,8 +16,26 @@
 <title>${moviedetail.title }</title>
 </head>
 <body>
-	<p>${moviedetail.title }</p>
-	<img src="${moviedetail.img}" class='img-fluid ' alt="a">
-	<p>${moviedetail.content }</p>
+	<div class ="container">
+		<h1>${moviedetail.title }</h1>
+		<div class ="row">
+			<div class ="col-3">
+				<img src="${moviedetail.img}" class='img-fluid ' alt="a">
+			</div>
+			<div class ="col-8 text-justify">
+				<div>개봉날짜 : ${moviedetail.openMovie}</div>
+				<div>감독 :${moviedetail.director }</div>
+				<div>배우 :${moviedetail.actor }</div>
+				<div class="row text-center">
+					<div class="col-md-3">장르 : ${moviedetail.genre}</div>
+					<div class="col-md-3">나라 : ${moviedetail.country}</div>
+					<div class="col-md-3">등급 : ${moviedetail.age }</div>
+				</div>
+				<div>런닝 타임 : ${moviedetail.runningtime }</div>
+			</div>
+			
+		</div>
+	<p class="lead">${moviedetail.content }</p>
+	</div>
 </body>
 </html>

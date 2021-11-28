@@ -52,6 +52,8 @@
         	</div>
 			<button type="submit" class="form-control btn btn-danger">생성하기</button>
 	
+	
+			
 		</form>	
 	</div>
 	

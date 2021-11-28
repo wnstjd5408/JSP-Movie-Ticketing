@@ -15,26 +15,16 @@
 <body>
 	<jsp:useBean id="dao" class ="movie.MovieDAO"></jsp:useBean>
 	<c:set var="movielist" value="${dao.movieselectall()}"></c:set>
-	<table class ="container my-3">
-        <thead>
-        <tr class="thead-dark">
-            <th>번호</th>
-            <th>이미지</th>
-            <th>제목</th>
-        </tr>
-        </thead>
-        <tbody>
+	<div class ="container my-3">
+ 			<div class= "row">
         	
 			<c:forEach var ="Movie" items="${movielist}" >
-			
-				<tr>
-					<td>${Movie.id}</td>
-					<td>
-					<a href="MovieDetail.jsp?id=${Movie.id}"><img src="${Movie.img}" class='img-fluid ' alt="a"></a>
-					</td>
-					<td>${Movie.title }</td>
-				</tr>
+				<div class ="col-4 col-md-4 text-center">
+					<a  href="MovieDetail.jsp?id=${Movie.id}"><img src="${Movie.img}" class='img-fluid ' alt="a"></a>
+					<p>${Movie.title }</p>
+				</div>		
 			</c:forEach>
+			</div>
 		<%-- 	<%
 				MovieDAO dao = new MovieDAO();
 				ArrayList<MovieDTO> dto = dao.movieselectall();
@@ -52,7 +42,6 @@
 			%> --%>
 		
 						
-        </tbody>
-    </table>
+	</div>
 </body>
 </html>

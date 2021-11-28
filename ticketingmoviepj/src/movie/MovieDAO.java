@@ -54,7 +54,7 @@ public class MovieDAO {
 				dto.setDirector(rs.getString("director"));
 				dto.setActor(rs.getString("actor"));
 				dto.setGenre(rs.getString("genre"));
-				dto.setAge(rs.getString("title"));
+				dto.setAge(rs.getString("age"));
 				dto.setCountry(rs.getString("country"));
 				dto.setRunningtime(rs.getString("runningtime"));
 				dto.setContent(rs.getString("content"));

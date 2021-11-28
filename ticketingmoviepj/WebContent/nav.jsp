@@ -44,12 +44,13 @@
   					<li>
 	  					<a class="nav-link" href="${cpath }/User/myPage.jsp">마이페이지</a>
 	  				</li>
+	  				<li>
+	  					<a class="nav-link" href="${cpath }/Ticketing/ticketingForm.jsp">영화예매</a>
+	  				</li>
   				</c:otherwise>	
 	  				
   			</c:choose>
-  					<li>
-	  					<a class="nav-link" href="${cpath }/Ticketing/ticketingForm.jsp">영화예매</a>
-	  				</li>
+  				
   			</ul>
   		</div>
   		
