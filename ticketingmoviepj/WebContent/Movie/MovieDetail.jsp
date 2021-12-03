@@ -14,28 +14,36 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="${cpath }/assets/bootstrap.min.css">
 <title>${moviedetail.title }</title>
+<style>
+	.box{
+	
+		border : 1px solid black;
+	}
+</style>
 </head>
 <body>
-	<div class ="container">
+	<div class ="container box">
 		<h1>${moviedetail.title }</h1>
 		<div class ="row">
 			<div class ="col-3">
 				<img src="${moviedetail.img}" class='img-fluid ' alt="a">
 			</div>
-			<div class ="col-8 text-justify">
-				<div>개봉날짜 : ${moviedetail.openMovie}</div>
-				<div>감독 :${moviedetail.director }</div>
-				<div>배우 :${moviedetail.actor }</div>
+			<div class ="col-8 text-justify box">
+				<div class="m-2">개봉날짜 : ${moviedetail.openMovie}</div>
+				<div class="m-2">감독 :${moviedetail.director }</div>
+				<div class="m-2">배우 :${moviedetail.actor }</div>
 				<div class="row text-center">
-					<div class="col-md-3">장르 : ${moviedetail.genre}</div>
-					<div class="col-md-3">나라 : ${moviedetail.country}</div>
-					<div class="col-md-3">등급 : ${moviedetail.age }</div>
+					<div class="col-md-3 m-1">장르 : ${moviedetail.genre}</div>
+					<div class="col-md-3 m-1">나라 : ${moviedetail.country}</div>
+					<div class="col-md-3 m-1">등급 : ${moviedetail.age }</div>
 				</div>
-				<div>런닝 타임 : ${moviedetail.runningtime }</div>
+				<div class="m-2">런닝 타임 : ${moviedetail.runningtime }</div>
 			</div>
 			
 		</div>
+	<div class="m-2 box">
 	<p class="lead">${moviedetail.content }</p>
+	</div>
 	</div>
 </body>
 </html>

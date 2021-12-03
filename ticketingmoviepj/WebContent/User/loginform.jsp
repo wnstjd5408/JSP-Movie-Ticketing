@@ -174,22 +174,29 @@ fieldset, img {
 
 <div class="inner_login">
     <div class="login_tistory">
-
+		<div class="row">
+		<div class ="col-4">
+			<h3>로그인</h3>
+		</div>
+		<div class="col-8 text-right">
+			<span>또는 <a href="#">관리자 계정으로</a></span>
+			
+		</div> 
+		</div>
         <form method="post" id="authForm" action="loginprocess.jsp">
-            <input type="hidden" name="redirectUrl" value="https://blogpack.tistory.com/manage">
             <fieldset>
             <legend class="screen_out">로그인 정보 입력폼</legend>
             <div class="box_login">
                 <div class="inp_text">
-                <label for="loginId" class="screen_out">아이디</label>
-                <input type="email" id="loginId" name="loginId" placeholder="ID" >
+                <label for="userid" class="screen_out">아이디</label>
+                <input type="text" id="userid" name="userid" placeholder="ID" >
                 </div>
                 <div class="inp_text">
                 <label for="loginPw" class="screen_out">비밀번호</label>
                 <input type="password" id="loginPw" name="password" placeholder="Password" >
                 </div>
             </div>
-            <button type="submit" class="btn_login"  disabled>로그인</button>
+            <button type="submit" class="btn_login" >로그인</button>
             
             
             </fieldset>

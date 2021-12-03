@@ -30,7 +30,7 @@
   			<c:choose>
   				<c:when test="${empty login }">
   					<li class="nav-item">
-	  					<a class="nav-link" href="${cpath }/User/loginform1.jsp">로그인</a>
+	  					<a class="nav-link" href="${cpath }/User/loginform.jsp">로그인</a>
 	  				</li>
 	  				<li>
 	  					<a class="nav-link" href="${cpath }/User/registerform.jsp">회원가입</a>
@@ -42,7 +42,7 @@
 	  					<a class="nav-link" href="${cpath }/User/logout.jsp">로그아웃</a>
 	  				</li>
   					<li>
-	  					<a class="nav-link" href="${cpath }/User/myPage.jsp">마이페이지</a>
+	  					<a class="nav-link" href="${cpath }/User/myPage.jsp"> 마이페이지</a>
 	  				</li>
 	  				<li>
 	  					<a class="nav-link" href="${cpath }/Ticketing/ticketingForm.jsp">영화예매</a>

@@ -39,13 +39,13 @@ public class MovieDAO {
 	public MovieDTO movieSelectOne(String id) {
 		String sql = "select * from movie where id =" + id;
 		
-		
+		System.out.println("sql문 :" + sql);
 		try {
 			conn = ds.getConnection();
 			state = conn.createStatement();
 			rs = state.executeQuery(sql);
 			
-			System.out.println("sql문 :" + sql);
+		
 			while(rs.next()){
 				MovieDTO dto = new MovieDTO();
 				dto.setId(rs.getInt("id"));

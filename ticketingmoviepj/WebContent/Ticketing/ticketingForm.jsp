@@ -72,7 +72,7 @@
 					<h3>상영관</h3>
 				</div>	
 				<ul id="roomlist" class="list-group ">
-	
+						
 				</ul>
 			</div>
 			<div class ="col-md-3">
@@ -122,7 +122,7 @@
 		 </div>
 		 </div>
 	<div>
-		<button id="sendSeat" class= 'btn btn-danger btn-block my-5 ' onclick="seatCheck()" disabled="disabled">좌석선택</button>
+		<button id="sendSeat" class= 'btn btn-danger btn-block my-5 ' disabled="disabled">좌석선택</button>
 	</div>
 
 
@@ -134,7 +134,7 @@
  			$("#timeList").on('click', 'li', function cl(){
  				var timeId = $(this).attr("class");
  				timeId = timeId.split('_');
- 				console.log(timeId[1]);
+ 				console.log(timeId[1]); //timeId PK
 				$('#sendSeat').attr('disabled', false);
 				sendid = timeId[1]
  				
@@ -155,6 +155,7 @@
 				var id = theaterid[1];
 				$('#timeList').empty();
 				closeCalendar();
+				
 		 	$.ajax({
 					type : 'get',
 					url : 'http://localhost:8090/ticketingmoviepj/TheaterController', 

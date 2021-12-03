@@ -18,12 +18,12 @@
 	<div class ="container my-3">
  			<div class= "row">
         	
-			<c:forEach var ="Movie" items="${movielist}" >
-				<div class ="col-4 col-md-4 text-center">
-					<a  href="MovieDetail.jsp?id=${Movie.id}"><img src="${Movie.img}" class='img-fluid ' alt="a"></a>
-					<p>${Movie.title }</p>
-				</div>		
-			</c:forEach>
+				<c:forEach var ="Movie" items="${movielist}" >
+					<div class ="col-4 col-md-4 text-center">
+						<a  href="MovieDetail.jsp?id=${Movie.id}"><img src="${Movie.img}" class='img-fluid ' alt="a"></a>
+						<p>${Movie.title }</p>
+					</div>		
+				</c:forEach>
 			</div>
 		<%-- 	<%
 				MovieDAO dao = new MovieDAO();

@@ -46,7 +46,7 @@
 		<c:if test="${list == null }">
 		<script>
 			alert('로그인 실패했습니다');
-			location.replace('loginform1.jsp');	
+			location.replace('loginform.jsp');	
 		</script>
 	</c:if>
 </body>
