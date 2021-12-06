@@ -155,7 +155,7 @@ fieldset, img {
 	
 		<c:redirect url ="${cpath}/Movie/MainForm.jsp"></c:redirect>
 	</c:if>
-    <%
+<%--     <%
     	Cookie[] cookies = request.getCookies();
         	
         	String storeid = null;
@@ -171,7 +171,7 @@ fieldset, img {
     	}
     		}
     %>
-
+ --%>
 <div class="inner_login">
     <div class="login_tistory">
 		<div class="row">

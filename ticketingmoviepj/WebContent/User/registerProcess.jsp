@@ -22,7 +22,7 @@
 <c:if test="${join >= 1 }">
 	<script>
 		alert('회원가입 성공!!!')
-		location.replace('loginform1.jsp');		
+		location.replace('loginform.jsp');		
 	</script>
 </c:if>
 <c:if test="${join < 1 }">

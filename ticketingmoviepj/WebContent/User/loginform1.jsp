@@ -17,28 +17,12 @@
 	}
 
 </style>
+<script src="${cpath }/assets/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<c:if test="${login != null }">
-	
-		<c:redirect url ="${cpath}/Movie/MainForm.jsp"></c:redirect>
+			<c:redirect url ="../Movie/MainForm.jsp"></c:redirect>
 	</c:if>
-    <%
-    	Cookie[] cookies = request.getCookies();
-        	
-        	String storeid = null;
-        	String userid = null;
-        	
-        	
-        	if(cookies != null){
-        		
-        		for(Cookie c : cookies){
-        			if("storeid".equals(c.getName())) storeid = c.getValue();
-        			if ("userid".equals(c.getName()))
-    			userid = c.getValue();
-    	}
-    		}
-    %>
 <div class ="container my-3">
     <div class = "row">
         <div class="col-4">

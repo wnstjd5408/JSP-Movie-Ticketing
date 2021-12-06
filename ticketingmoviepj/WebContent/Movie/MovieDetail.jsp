@@ -6,6 +6,8 @@
 
 <jsp:useBean id="dao" class="movie.MovieDAO"></jsp:useBean>	
 <c:set var ="moviedetail" value="${dao.movieSelectOne(param.id)}"></c:set>
+<jsp:useBean id="commentDAO" class="comment.CommentDAO"></jsp:useBean>
+<c:set var="commentList" value="${commentDAO.commentSelectAll(param.id) }"></c:set>
 <% request.setCharacterEncoding("UTF-8"); %>
 
 <!DOCTYPE html>
@@ -19,6 +21,11 @@
 	
 		border : 1px solid black;
 	}
+	
+	.anyclass{
+  		height:100px;
+  		overflow-y: scroll; 
+		}
 </style>
 </head>
 <body>
@@ -44,6 +51,31 @@
 	<div class="m-2 box">
 	<p class="lead">${moviedetail.content }</p>
 	</div>
+	</div>
+	<div class = "container box">
+		<table class="table m-2 anyclass">
+		<thead>
+			<tr>
+				<th>댓글번호</th>
+				<th>평점</th>
+				<th>작성자</th>
+				<th>작성시간</th>
+			</tr>
+		</thead>
+		<tbody>
+				<c:forEach var="comment" items="${commentList }">
+				<tr  >
+					<td><a href="${cpath}/Comment/CommentViewForm.jsp?id=${comment.commentIDX}">${comment.commentIDX }</a></td>
+					<td>${comment.score }</td>
+					<td>${comment.writer }</td>
+					<td>${comment.creationDate }</td>				
+				</tr>
+				</c:forEach>
+		</tbody>
+		</table>
+		
+	
+	
 	</div>
 </body>
 </html>

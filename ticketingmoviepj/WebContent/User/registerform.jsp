@@ -9,6 +9,7 @@
 <link rel="stylesheet" href="${cpath }/assets/bootstrap.min.css">
 <link rel="shortcut icon" type="image/x-icon" href="https://img.cgv.co.kr/theater_img/favicon.ico">
 <title>회원가입</title>
+<script src="${cpath }/assets/jquery-3.6.0.min.js"></script>
 </head>
 <body>
 	<c:if test="${login != null }">
@@ -27,7 +28,7 @@
 				<label for ="userid">아이디</label>
 				<div class="row">
 					<div class ="col-md-8">
-						<input type="text" class="form-control" id="userid" name="userid" required autofocus>
+						<input type="text" class="form-control" id="userid" name="userid" autofocus>
 					</div>
 					<div class ="col-md-2">	
 						<input type="button" class ="btn btn-danger" value="중복확인" onclick="idcheck()">
@@ -36,7 +37,7 @@
 			</div>
 			<div class="form-group">
             	<label for="password">비밀번호</label>
-            	<input type="password" class="form-control" id="password" name="password" required >
+            	<input type="password" class="form-control" id="password" name="password" >
        	 	</div>
        	 	 <div class="form-group">
             	<label for="username">이름</label>
@@ -50,7 +51,7 @@
             	<label for="phoneNum">핸드폰번호</label>
             	<input type="text" class="form-control" id="phoneNum" name="phoneNum">
         	</div>
-			<button type="submit" class="form-control btn btn-danger">생성하기</button>
+			<button id ="sub" type="submit" class="form-control btn btn-danger" disabled="disabled">생성하기</button>
 	
 	
 			
@@ -71,8 +72,18 @@
 			alert("이름을 입력해주세요");
 			return false;
 		}
+		if(document.joinform.userid.value.length < 7)
+			{
+			alert("아이디를 7글자 이상 입력해주세요");
+			return false;		
+			}
+		if(document.joinform.password.value.length < 7)
+		{
+			alert("비밀번호를  7글자 이상 입력해주세요");
+			return false;
+		
+		}
 	}
-	
 	
 	function idcheck(){
 		var userid = document.joinform.userid.value;
@@ -81,6 +92,7 @@
 			return false;
 		}
 		
+		$('#sub').attr('disabled', false);
 		var url = "idCheck.jsp?userid=" + userid;
 		open(url,"confirm","toolbar=no,location=no,status=no,menubar=no,scrollbar=no,resizable=no,width=300,height=200");
 	}

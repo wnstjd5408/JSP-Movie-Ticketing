@@ -20,7 +20,6 @@
 	<c:if test="${idcheck == 1 }">
 		
 		<br><br>
-		<%  %>
 		<p>${check.userid } 는 사용 불가능한 아이디입니다!!!</p>
 	</c:if>
 	<c:if test="${idcheck != 1 }">
