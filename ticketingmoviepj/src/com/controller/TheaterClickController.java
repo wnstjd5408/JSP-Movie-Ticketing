@@ -19,7 +19,7 @@ import room.RoomDTO;
 
 
 @WebServlet("/TheaterController") 
-public class TheaterController extends HttpServlet{
+public class TheaterClickController extends HttpServlet{
 
 	@Override 
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException 
