@@ -26,13 +26,13 @@
 <c:if test="${ticket >= 1 }">
 	<script>
 		alert('예약 성공!!!')
-		location.replace('${cpath}/Movie/MainForm.jsp');		
+		location.replace('${cpath}/Movie/MainUI.jsp');		
 	</script>
 </c:if>
 <c:if test="${ticket < 1 }">
 	<script>
 		alert('예약 실패입니다!! 다시입력해주세요~~~');
-		location.replace('${cpath}/Ticketing/ticketingForm.jsp');
+		location.replace('${cpath}/Ticketing/TicketingUI.jsp');
 	</script>
 </c:if>
 

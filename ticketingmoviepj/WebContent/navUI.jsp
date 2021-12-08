@@ -45,7 +45,7 @@
 	  					<a class="nav-link" href="${cpath }/User/myPageUI.jsp"> 마이페이지</a>
 	  				</li>
 	  				<li>
-	  					<a class="nav-link" href="${cpath }/Ticketing/ticketingUI.jsp">영화예매</a>
+	  					<a class="nav-link" href="${cpath }/Ticketing/TicketingUI.jsp">영화예매</a>
 	  				</li>
   				</c:otherwise>	
 	  				

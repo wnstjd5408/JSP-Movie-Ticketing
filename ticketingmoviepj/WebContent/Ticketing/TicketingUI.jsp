@@ -228,11 +228,14 @@
 				}); 
 			
 			});
+			
+			//calendar 보여주기
 			function viewCalendar(){
 
 				jQuery('#view').css("display", "block");  	
 			};
 			
+			//calendar 감추기
 			function closeCalendar(){
 				jQuery('#view').css("display", "none");  	
 			}
@@ -261,6 +264,7 @@
 				
 			}); 
 			});
+			
 			//타임 리스트 출력
 			function makeTiList(data){
 				$('#timeList').empty();
@@ -286,18 +290,12 @@
  			
  			//좌석 선택 버튼을 눌렀을때
  			$("#sendSeat").on('click', function(){
- 				location.href = 'sendCheckingUI.jsp?id=' + sendid;
+ 				location.href = 'SeatCheckingUI.jsp?id=' + sendid;
  					
  			});
 			
 	});
 	</script>
-	
- 
-	
-	
-	
-	
-	
+
 </body>
 </html>
