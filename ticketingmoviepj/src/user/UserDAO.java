@@ -120,7 +120,7 @@ public class UserDAO {
 				+ "values('%s', '%s', '%s', %d, '%s')";
 		
 		
-		sql = String.format(sql, register.getUserid(),register.getPassword(), register.getUsername(),
+		sql = String.format(sql, register.getUserid().trim(),register.getPassword(), register.getUsername().trim(),
 				register.getAge(),register.getPhoneNum());
 		
 		

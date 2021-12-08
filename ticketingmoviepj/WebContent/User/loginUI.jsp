@@ -153,7 +153,7 @@ fieldset, img {
 <body class="text-center">
 	<c:if test="${login != null }">
 	
-		<c:redirect url ="${cpath}/Movie/MainForm.jsp"></c:redirect>
+		<c:redirect url ="${cpath}/Movie/MainUI.jsp"></c:redirect>
 	</c:if>
 <%--     <%
     	Cookie[] cookies = request.getCookies();
@@ -179,7 +179,7 @@ fieldset, img {
 			<h3>로그인</h3>
 		</div>
 		<div class="col-8 text-right">
-			<span>또는 <a href="#">관리자 계정으로</a></span>
+			<span>또는 <a href="loginform1.jsp">관리자 계정으로</a></span>
 			
 		</div> 
 		</div>

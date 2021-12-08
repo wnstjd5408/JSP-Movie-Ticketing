@@ -44,7 +44,7 @@
 					<div class="col-md-3 m-1">나라 : ${moviedetail.country}</div>
 					<div class="col-md-3 m-1">등급 : ${moviedetail.age }</div>
 				</div>
-				<div class="m-2">런닝 타임 : ${moviedetail.runningtime }</div>
+				<div class="m-2">러닝 타임 : ${moviedetail.runningtime }</div>
 			</div>
 			
 		</div>
@@ -64,12 +64,12 @@
 		</thead>
 		<tbody>
 				<c:forEach var="comment" items="${commentList }">
-				<tr  >
-					<td><a href="${cpath}/Comment/CommentViewForm.jsp?id=${comment.commentIDX}">${comment.commentIDX }</a></td>
-					<td>${comment.score }</td>
-					<td>${comment.writer }</td>
-					<td>${comment.creationDate }</td>				
-				</tr>
+					<tr>
+						<td><a href="${cpath}/Comment/CommentViewForm.jsp?id=${comment.commentIDX}">${comment.commentIDX }</a></td>
+						<td>${comment.score }</td>
+						<td>${comment.writer }</td>
+						<td>${comment.creationDate }</td>				
+					</tr>
 				</c:forEach>
 		</tbody>
 		</table>

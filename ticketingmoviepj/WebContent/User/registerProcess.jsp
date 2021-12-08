@@ -22,13 +22,13 @@
 <c:if test="${join >= 1 }">
 	<script>
 		alert('회원가입 성공!!!')
-		location.replace('loginform.jsp');		
+		location.replace('loginUI.jsp');		
 	</script>
 </c:if>
 <c:if test="${join < 1 }">
 	<script>
 		alert('회원가입 실패입니다!! 다시입력해주세요~~~');
-		location.replace('registerform.jsp');
+		location.replace('registerUI.jsp');
 	</script>
 </c:if>
 </body>

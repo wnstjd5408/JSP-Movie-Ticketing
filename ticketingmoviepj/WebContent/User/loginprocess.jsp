@@ -20,13 +20,13 @@
 		<c:set var="login" scope="session">${login.userid }</c:set>
 		<script>
 			alert('로그인 성공했습니다');
-			location.replace('${cpath}/Movie/MainForm.jsp');	
+			location.replace('${cpath}/Movie/MainUI.jsp');	
 		</script>
 	</c:if>
 		<c:if test="${list == null }">
 		<script>
 			alert('로그인 실패했습니다');
-			location.replace('loginform1.jsp');	
+			location.replace('loginUI.jsp');	
 		</script>
 	</c:if>
 </body>

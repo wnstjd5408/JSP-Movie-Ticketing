@@ -100,7 +100,6 @@ public class CommentDAO {
 				comment.setWriter(rs.getString("writer"));
 				SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd hh:mm");
 				comment.setCreationDate(sdf.format(rs.getTimestamp("creationDate")));
-				System.out.println(sdf.format(rs.getTimestamp("creationDate")));
 				commentList.add(comment);
 			}
 			return commentList;

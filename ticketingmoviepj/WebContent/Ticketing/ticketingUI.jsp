@@ -42,8 +42,6 @@
 
 </head>
 <body>
-<%-- 	<jsp:useBean id="roomdao" class="room.RoomDAO"></jsp:useBean>
-	<c:set var = "roomlist" value = "${roomdao.theaterSelectOne() }"></c:set> --%>
 	<div class="container-fluid my-2">
 		<div class="row">
 			
@@ -128,38 +126,27 @@
 
 	<script type = "text/javascript">
 	$(document).ready(function() {
- 			var id = null;
- 			var timeid = null;
- 			var sendid = null;
- 			$("#timeList").on('click', 'li', function cl(){
- 				var timeId = $(this).attr("class");
- 				timeId = timeId.split('_');
- 				console.log(timeId[1]); //timeId PK
-				$('#sendSeat').attr('disabled', false);
-				sendid = timeId[1]
- 				
- 			});
+ 			var id = null; //영화관 아이디
+ 			var timeid = null; //타임리스트 아이디
+ 			var sendid = null; //좌석선택시 보내는값
+ 			var tid = null;//상영관 아이디 PK
  			
- 			
- 			
- 			$("#sendSeat").on('click', function(){
- 				location.href = 'sendChecking.jsp?id=' + sendid;
- 					
- 			});
+ 		
  			
  			
  			// 영화관 클릭을 했을 때 영화관의 PK를 전해줌
 			$("#theaterList").on('click', 'li', function(){
 				var theaterid = $(this).attr("class");
 				theaterid = theaterid.split('_');
-				var id = theaterid[1];
+				tid = theaterid[1];
+				console.log(tid);
 				$('#timeList').empty();
 				closeCalendar();
 				
 		 	$.ajax({
 					type : 'get',
-					url : 'http://localhost:8090/ticketingmoviepj/TheaterController', 
-					data : {id: id},
+					url : 'http://localhost:8090/ticketingmoviepj/TheaterClickController', 
+					data : {tid: tid},
    				    dataType : "json",
 					success : function(data){
 						console.log(data);
@@ -171,6 +158,7 @@
 				}); 
 			
 			});
+ 			
 			//상영관리스트 출력
 			function makeRoList(data){
 			  $('#roomlist').empty();
@@ -182,8 +170,12 @@
 			  });
 			
 			} 
+			
 			//영화리스트 클릭시 상영관 클래스에 클래스이름을 더함
 			$("#movieList").on('click', 'li', function(){
+				console.log("영화리스트 클릭시 영화관 아이디값 :" +tid);
+				console.log("영화리스트 클릭시 타임리스트 아이디값 :" + timeid)
+			
 				$('#timeList').empty();
 				if(id != null){
 					$("#roomlist li").removeClass(id);
@@ -194,21 +186,25 @@
 				}
 				var movieId = $(this).attr("class");
 				movieId = movieId.split('_');
-				console.log("영화 클릭시 : " + movieId[1]);
 			    movieId = "_" + movieId[1];
 			   
 				$("#roomlist li").addClass(movieId);
 			    id = movieId;
+				console.log("영화리스트 클릭시 영화 아이디값 :" + id)
 			});
 			
 			
 			//상영관 클릭시 변화
 			$("#roomlist").on('click', 'li', function(){
+				if(timeid != null){
+					$("#calendar div").removeClass(timeid);
+				}
 				var roomId = $(this).attr("class");
 				roomId = roomId.split('_');
 				room = roomId[1];
 				movie = roomId[2];
-				console.log("상영관 클릭시 :" + room)
+				console.log("상영관리스트 클릭시 타임리스트 아이디값 :" + timeid)
+				console.log("상영관리스트 클릭시 상영관 PK :" + room)
 			$.ajax({
 					type : 'get',
 					url : 'http://localhost:8090/ticketingmoviepj/RoomClickController',
@@ -276,6 +272,24 @@
 							  + item.time + "</button></li>")
 				});
 			}
+			
+			//타임리스트 클릭시 버튼 disable = true
+ 			$("#timeList").on('click', 'li', function cl(){
+ 				timeId = $(this).attr("class");
+ 				timeId = timeId.split('_');
+ 				console.log(timeId[1]); //timeId PK
+				$('#sendSeat').attr('disabled', false);
+				sendid = timeId[1]
+ 				
+ 			});
+ 			
+ 			
+ 			//좌석 선택 버튼을 눌렀을때
+ 			$("#sendSeat").on('click', function(){
+ 				location.href = 'sendCheckingUI.jsp?id=' + sendid;
+ 					
+ 			});
+			
 	});
 	</script>
 	

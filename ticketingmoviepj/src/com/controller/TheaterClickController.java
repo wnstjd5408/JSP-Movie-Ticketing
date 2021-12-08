@@ -18,7 +18,7 @@ import room.RoomDAO;
 import room.RoomDTO;
 
 
-@WebServlet("/TheaterController") 
+@WebServlet("/TheaterClickController") 
 public class TheaterClickController extends HttpServlet{
 
 	@Override 
@@ -34,7 +34,7 @@ public class TheaterClickController extends HttpServlet{
 		req.setCharacterEncoding("UTF-8");
 		resp.setContentType("text/html;charset=utf-8");
 //		String theaterid = "A1";
-		String theaterid = req.getParameter("id");
+		String theaterid = req.getParameter("tid");
 		PrintWriter out = resp.getWriter();
 		RoomDAO dao = new RoomDAO();
 		ArrayList<RoomDTO> arr = dao.theaterSelectOne(theaterid);

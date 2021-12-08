@@ -12,7 +12,7 @@
 </head>
 <body>
 	<nav class= "navbar navbar-expand-lg navbar-light bg-light border-bottom">
-		<a class="navbar-brand"style=" color: #e71a0f;" href="${cpath }/Movie/MainForm.jsp"><strong>CGV</strong></a>
+		<a class="navbar-brand"style=" color: #e71a0f;" href="${cpath }/Movie/MainUI.jsp"><strong>CGV</strong></a>
 	    <button
 	    class="navbar-toggler ml-auto"
 	    type="button"
@@ -30,10 +30,10 @@
   			<c:choose>
   				<c:when test="${empty login }">
   					<li class="nav-item">
-	  					<a class="nav-link" href="${cpath }/User/loginform.jsp">로그인</a>
+	  					<a class="nav-link" href="${cpath }/User/loginUI.jsp">로그인</a>
 	  				</li>
 	  				<li>
-	  					<a class="nav-link" href="${cpath }/User/registerform.jsp">회원가입</a>
+	  					<a class="nav-link" href="${cpath }/User/registerUI.jsp">회원가입</a>
 	  				</li>
   				
   				</c:when>
@@ -42,10 +42,10 @@
 	  					<a class="nav-link" href="${cpath }/User/logout.jsp">로그아웃</a>
 	  				</li>
   					<li>
-	  					<a class="nav-link" href="${cpath }/User/myPage.jsp"> 마이페이지</a>
+	  					<a class="nav-link" href="${cpath }/User/myPageUI.jsp"> 마이페이지</a>
 	  				</li>
 	  				<li>
-	  					<a class="nav-link" href="${cpath }/Ticketing/ticketingForm.jsp">영화예매</a>
+	  					<a class="nav-link" href="${cpath }/Ticketing/ticketingUI.jsp">영화예매</a>
 	  				</li>
   				</c:otherwise>	
 	  				

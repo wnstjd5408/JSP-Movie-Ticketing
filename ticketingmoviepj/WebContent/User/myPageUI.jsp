@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file ="../navUI.jsp" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <c:set var="cpath">${pageContext.request.contextPath }</c:set>
 <jsp:useBean id="dao" class="user.UserDAO" ></jsp:useBean>
@@ -35,7 +36,14 @@
         </div>
          <div class="form-group">
             <label for="phoneNum">핸드폰번호</label>
-            <span class = "form-control">${info.phoneNum}</span>
+            <c:choose>
+	            <c:when test="${info.phoneNum ne null }">
+	                  <span class = "form-control">${info.phoneNum}</span>
+	            </c:when>
+	            <c:when test="${info.phoneNum eq null }">
+	            	<span class="form-control">핸드폰 번호가 없습니다.</span>
+	            </c:when>
+            </c:choose>
         </div>
 	</div>
 	
