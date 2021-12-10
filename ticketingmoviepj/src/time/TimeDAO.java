@@ -37,8 +37,9 @@ public class TimeDAO {
 	}
 	public ArrayList<TimeDTO> calendarSelectAll(String movieid, String roomId, String date){
 		ArrayList<TimeDTO> timeList = new ArrayList<TimeDTO>();
-		String selectday = "2021-12-" + date;
-		String sql = "select * from time where id =" + movieid +  " and rid ='" + roomId+"' and date= '" +selectday + "'";
+		String[] selectday = date.split("T");
+		String d = "2021-12-" + selectday[1];
+		String sql = "select * from time where id =" + movieid +  " and rid ='" + roomId+"' and date= '" +d + "'";
 		System.out.println("SQL 구문 : " + sql);
 		
 		try {

@@ -87,7 +87,7 @@ public class MovieDAO {
 		try {
 			conn = ds.getConnection();
 			state = conn.createStatement();
-			rs = state.executeQuery("select * from movie");
+			rs = state.executeQuery("select * from movie order by openMovie desc");
 			
 			
 			

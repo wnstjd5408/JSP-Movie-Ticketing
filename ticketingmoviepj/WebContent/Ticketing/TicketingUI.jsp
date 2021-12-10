@@ -102,10 +102,10 @@
 				    	<div class="blank"></div>
 						<c:forEach var="i" begin="1" end="31" varStatus="status">
 							<c:if test="${i < 10 }">
-							    <div class="-0${i}"><c:out value="${i}" /></div>
+							    <div class="-T0${i}"><c:out value="${i}" /></div>
 							</c:if>
 							<c:if test= "${i >= 10 }">
-							   <div class="-${i}"><c:out value="${i}" /></div>
+							   <div class="-T${i}"><c:out value="${i}" /></div>
 							</c:if>
 						</c:forEach>
 						<div class="blank"></div>				    
