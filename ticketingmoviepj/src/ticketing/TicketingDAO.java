@@ -34,9 +34,11 @@ public class TicketingDAO {
 	}
 	public ArrayList<TicketingDTO> selectTicketOne(String id) {
 		ArrayList<TicketingDTO> ticketList = new ArrayList<TicketingDTO>();
-		String sql = "select ticketingId, seat.seatNum, date, time, title, age"
-				+ " from ticketing, seat, time, movie where ticketing.seatNum=seat.seatNum\r\n" + 
-				"and seat.timeId=time.timeId and time.id=movie.id and  userId ='" + id +"'";
+		String sql = "select ticketingId,room.rname , seat.seatLine, date, time, title, age "
+				+ "from ticketing, seat, time, movie, room where room.rid = time.rid and "
+				+ "ticketing.seatNum=seat.seatNum and seat.timeId=time.timeId and time.id=movie.id "
+				+ "and  userId = '" + id +"'"; 
+				
 		
 		System.out.println(sql);
 		System.out.println("sql문 :" + sql);
@@ -49,7 +51,8 @@ public class TicketingDAO {
 			while(rs.next()){
 				TicketingDTO ticket = new TicketingDTO();
 				ticket.setTicketingId(rs.getInt("ticketingId"));
-				ticket.setSeatNum(rs.getInt("seatNum"));
+				ticket.setRname(rs.getNString("rname"));
+				ticket.setSeatLine(rs.getInt("seatLine"));
 				ticket.setDate(rs.getDate("date"));
 				ticket.setTime(rs.getTime("time"));
 				ticket.setTitle(rs.getNString("title"));
@@ -78,6 +81,8 @@ public class TicketingDAO {
 	
 	public int insertTicket(TicketingDTO ticket) {
 		String sql = "insert into ticketing(ticketingDate, seatNum, userId) values(DEFAULT, %s, '%s')";
+		System.out.println(ticket.getSeatNum());
+		System.out.println(ticket.getUserId());
 		sql = String.format(sql, ticket.getSeatNum(), ticket.getUserId());
 		
 		System.out.println("SQL 구분 : "  + sql);

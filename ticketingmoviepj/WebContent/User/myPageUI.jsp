@@ -58,6 +58,7 @@
 		 	<thead>
 		 		<tr>
 		 			<th>티켓번호</th>
+		 			<th>상영관이름</th>
 		 			<th>좌석번호</th>
 		 			<th>날짜</th>
 		 			<th>시간</th>		
@@ -70,7 +71,8 @@
 		 		<c:forEach var="tikcetInfo" items="${ticketList }">
 		 		<tr>
 		 			<td>${tikcetInfo.ticketingId }</td>
-		 			<td>${tikcetInfo.seatNum }</td>
+		 			<td>${tikcetInfo.rname }</td>
+		 			<td>${tikcetInfo.seatLine }</td>
 		 			<td>${tikcetInfo.date }</td>
 		 			<td>${tikcetInfo.time }</td>
 		 			<td>${tikcetInfo.title }</td>

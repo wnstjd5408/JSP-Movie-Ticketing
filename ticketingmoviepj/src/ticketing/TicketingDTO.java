@@ -5,8 +5,12 @@ import java.util.Date;
 
 public class TicketingDTO {
 
+
+	
 	private int ticketingId;
 	private int seatNum;
+	private int seatLine;
+	private String rname;
 	private Date date;
 	private Time time;
 	private String title;
@@ -26,6 +30,18 @@ public class TicketingDTO {
 	}
 	public void setSeatNum(int seatNum) {
 		this.seatNum = seatNum;
+	}
+	public int getSeatLine() {
+		return seatLine;
+	}
+	public void setSeatLine(int seatLine) {
+		this.seatLine = seatLine;
+	}
+	public String getRname() {
+		return rname;
+	}
+	public void setRname(String rname) {
+		this.rname = rname;
 	}
 	public Date getDate() {
 		return date;
@@ -58,7 +74,8 @@ public class TicketingDTO {
 		this.userId = userId;
 	}
 	
-	
+
+
 
 	
 	

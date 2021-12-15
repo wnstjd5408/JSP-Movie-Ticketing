@@ -42,6 +42,11 @@
 
 </head>
 <body>
+	<c:if test="${login == null }">
+	
+		<c:redirect url ="${cpath}/Movie/MainUI.jsp"></c:redirect>
+	</c:if>
+
 	<div class="container-fluid my-2">
 		<div class="row">
 			

@@ -3,7 +3,8 @@
  <% request.setCharacterEncoding("utf-8"); %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <c:set var="cpath">${pageContext.request.contextPath }</c:set>
-
+<jsp:useBean id="ticket" class="ticketing.TicketingDTO"></jsp:useBean>
+<jsp:setProperty property="*" name="ticket"/>
 <!DOCTYPE html>
 <html>
 <head>
@@ -13,15 +14,10 @@
 </head>
 
 <body>
-<jsp:useBean id="ticket" class="ticketing.TicketingDTO"></jsp:useBean>
-<jsp:setProperty property="*" name="ticket"/>
+
 <jsp:useBean id="dao" class="ticketing.TicketingDAO"></jsp:useBean>
 <c:set var ="ticket"  value = "${dao.insertTicket(ticket) }"></c:set>
 
-<%
-	String id = request.getParameter("userId");
-	out.print(id);
-%>
 
 <c:if test="${ticket >= 1 }">
 	<script>

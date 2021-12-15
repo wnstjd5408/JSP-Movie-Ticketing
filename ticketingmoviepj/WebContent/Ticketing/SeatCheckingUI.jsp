@@ -7,7 +7,7 @@
 <c:set var="cpath">${pageContext.request.contextPath }</c:set>
 <jsp:useBean id="dao" class="seat.SeatDAO"></jsp:useBean>
 <c:set var="seatList" value="${dao.seatSelectAll(param.id) }"></c:set>
-<!DOCTYPE html>
+<!DOCTYPE html>	
 <html>
 <head>
 <link rel="stylesheet" href="${cpath}/assets/bootstrap.min.css">
@@ -23,6 +23,12 @@
 
 </head>
 <body>
+	<c:if test="${login == null }">
+	
+		<c:redirect url ="${cpath}/Movie/MainUI.jsp"></c:redirect>
+	</c:if>
+
+
 	<div class="container-fluid my-2">
 		<div class="row my-3">
 			<div class="col-4">
@@ -52,7 +58,7 @@
 		</div>
 		<div>
 			<br> <br>
-			<form method="post" class="post-form" action="ticketingCheck.jsp">
+			<form method="post" class="post-form" action="TicketingCheck.jsp">
 				<input type="hidden" class=form-control  name="seatNum"
 					id="seatNum">
 				<input type="hidden" class=form-control  name="userId"
@@ -70,6 +76,7 @@
 		$("#bTicketing").attr('disabled', false);
 		$("#userId").val(login);
 		$("#seatNum").val(s);
+		console.log(s);
 	};
 </script>
 
